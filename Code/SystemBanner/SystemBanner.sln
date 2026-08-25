@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.0.31912.275
+# Visual Studio Version 18
+VisualStudioVersion = 18.7.11925.98
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SystemBanner", "SystemBanner\SystemBanner.csproj", "{6E91CAE3-1758-42F8-BD79-D6F06A47FB9B}"
 EndProject
@@ -13,11 +13,12 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{6E91CAE3-1758-42F8-BD79-D6F06A47FB9B}.Debug|Any CPU.ActiveCfg = Release|Any CPU
-		{6E91CAE3-1758-42F8-BD79-D6F06A47FB9B}.Debug|Any CPU.Build.0 = Release|Any CPU
+		{6E91CAE3-1758-42F8-BD79-D6F06A47FB9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E91CAE3-1758-42F8-BD79-D6F06A47FB9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6E91CAE3-1758-42F8-BD79-D6F06A47FB9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6E91CAE3-1758-42F8-BD79-D6F06A47FB9B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{01782362-D568-4BE5-9CDF-C868C64749E0}.Debug|Any CPU.ActiveCfg = Debug
+		{01782362-D568-4BE5-9CDF-C868C64749E0}.Debug|Any CPU.Build.0 = Debug
 		{01782362-D568-4BE5-9CDF-C868C64749E0}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution

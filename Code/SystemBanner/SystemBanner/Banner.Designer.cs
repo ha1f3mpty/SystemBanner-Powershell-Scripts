@@ -1,4 +1,4 @@
-﻿//Copyright (c) 2023, Aaron Wawrzyniak. MIT License Applies.
+﻿//Copyright (c) 2026, Aaron Wawrzyniak. MIT License Applies.
 using System;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
@@ -48,13 +48,13 @@ namespace SystemBanner
         private void BuildBanner(int bannerScreen, bool bannerPosition)
         {   int bannerWidth = System.Windows.Forms.Screen.AllScreens[bannerScreen].Bounds.Width; //be as wide as the screen it's on
             int bannerHeight;
-            if (System.Windows.Forms.Screen.AllScreens[bannerScreen].Bounds.Height < 1441) //gross magic numbers that will be fixed ASAP
+            if (System.Windows.Forms.Screen.AllScreens[bannerScreen].Bounds.Height < 1441) //gross magic numbers that ought be fixed ASAP
             {
                 bannerHeight = 17;
             }
             else
             {
-                bannerHeight = 24;
+                bannerHeight = 25;
             }
             // 
             // Banner
@@ -87,7 +87,7 @@ namespace SystemBanner
             this.classificationLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter; //draw the text centered within the banner/label
             this.classificationLabel.Size = new System.Drawing.Size(bannerWidth/2, bannerHeight); //make the label the same size as the banner itself
             this.classificationLabel.Text = Program.bannerText; //set the text to the value the function argument specifies
-            this.classificationLabel.Font = new System.Drawing.Font("Arial", bannerHeight-1, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel); //set the label font to bold
+            this.classificationLabel.Font = new System.Drawing.Font("Arial", bannerHeight-3, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel); //set the label font to bold
             this.classificationLabel.Top = 1; //appear at the top of the banner
             this.classificationLabel.Left = (bannerWidth / 4); //appear at the left of the banner
             this.Controls.Add(this.classificationLabel); //draw the label
@@ -275,7 +275,7 @@ namespace SystemBanner
             }
             else
             {
-                appBarHeight = 24;
+                appBarHeight = 25;
             }
             APPBARDATA abd = new APPBARDATA();//new instance of the APPBARDATA struct
             abd.cbSize = System.Runtime.InteropServices.Marshal.SizeOf(abd);  //grab the size of the abd instance

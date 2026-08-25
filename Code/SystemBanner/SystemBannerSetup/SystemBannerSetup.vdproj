@@ -328,15 +328,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:SystemBanner"
-        "ProductCode" = "8:{931006E9-2DEC-4EE0-80CC-05BA379E066D}"
-        "PackageCode" = "8:{C043AE9F-F7C4-469C-97AF-FD71DB815099}"
+        "ProductCode" = "8:{4AFCC5A6-B534-48B5-AC54-66BAFEA1B668}"
+        "PackageCode" = "8:{7C63A6E4-1284-4F1B-ACE9-17D61F0A423E}"
         "UpgradeCode" = "8:{B174519D-9826-468A-BEEB-227F81E150D9}"
         "AspNetVersion" = "8:"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:1.0.0007"
+        "ProductVersion" = "8:1.1.0000"
         "Manufacturer" = "8:Aaron Wawrzyniak"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -420,7 +420,7 @@
                                                                 {
                                                                     "{ADCFDA98-8FDD-45E4-90BC-E3D20B029870}:_286F49E73C5D45F69DD480D36494AF61"
                                                                     {
-                                                                    "Name" = "8:C:\\Program Files\\SystemBanner\\SystemBanner.exe"
+                                                                    "Name" = "8:[TARGETDIR]\\SystemBanner.exe"
                                                                     "Condition" = "8:"
                                                                     "Transitive" = "11:FALSE"
                                                                     "ValueTypes" = "3:1"
@@ -479,7 +479,7 @@
                                                             "Condition" = "8:"
                                                             "Transitive" = "11:FALSE"
                                                             "ValueTypes" = "3:1"
-                                                            "Value" = "8:C:\\Program Files\\SystemBanner\\SystemBanner.exe"
+                                                            "Value" = "8:TARGETDIR\\SystemBanner.exe"
                                                             }
                                                         }
                                                     }
@@ -964,7 +964,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_B3FCFB1CA95A4E1F9118543E5F29EDE2"
             {
-            "SourcePath" = "8:..\\SystemBanner\\obj\\Release\\SystemBanner.exe"
+            "SourcePath" = "8:..\\SystemBanner\\obj\\Debug\\SystemBanner.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_AB12898FDC334EBB85250DDE9313A543"
