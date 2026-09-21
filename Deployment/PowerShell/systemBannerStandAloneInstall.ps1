@@ -366,7 +366,7 @@ $BannerPositionSetting = 0
 
 # Machine-wide startup command.
 
-$RunCommand = $exePath
+$RunCommand = "`"$exePath`""
 
 # ============================================================
 # STOP EXISTING SYSTEMBANNER
