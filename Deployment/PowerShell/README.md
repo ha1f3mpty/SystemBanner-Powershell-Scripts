@@ -4,7 +4,7 @@ This directory contains PowerShell scripts for deploying, configuring, detecting
 
 The scripts are intended to provide an alternative to the existing batch-file installation method and are used to automate installation and configuration when you do not have Group Policy (Cloud Only) or no access to gpedit.msc (Windows Home Edition). 
 
-The majority are in Detect/Remediate pairs for deployment via can be used for manual deployment or with endpoint management platforms such as Microsoft Intune or Automox. There is one script that is tooled as a standalone install with a default configuration for UNCLASSIFIED. You can easily edit this one since I added inline comments for each configuration setting.
+The majority of the scripts are in Detect/Remediate pairs for deployment via manual deployment or with your faivoriate endpoint management platforms such as Microsoft Intune or Automox. There is one script that is tooled as a standalone install with a default configuration for UNCLASSIFIED. You can easily edit this one since I added inline comments for each configuration setting.
 
 ## Contents
 
