@@ -33,7 +33,9 @@ $BannerText = "TOP SECRET//SAR-RED CAR/SAR-TIN BAKER//WAIVED"
 
 $PolicyPath = "HKLM:\Software\Policies\SystemBanner"
 
-$installPath = Join-Path $env:ProgramFiles "SystemBanner"
+$programFiles = if ($env:ProgramW6432) { $env:ProgramW6432 } else { $env:ProgramFiles }
+
+$installPath = Join-Path $programFiles "SystemBanner"
 $exePath     = Join-Path $installPath "SystemBanner.exe"
 
 

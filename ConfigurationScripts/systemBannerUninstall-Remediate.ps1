@@ -10,7 +10,8 @@
 # Paths
 # ------------------------------------------------------------
 
-$installPath = Join-Path $env:ProgramFiles "SystemBanner"
+$programFiles = if ($env:ProgramW6432) { $env:ProgramW6432 } else { $env:ProgramFiles }
+$installPath = Join-Path $programFiles "SystemBanner"
 $exePath     = Join-Path $installPath "SystemBanner.exe"
 
 $admxPath = Join-Path $env:windir "PolicyDefinitions\SystemBanner.admx"
