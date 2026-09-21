@@ -282,7 +282,7 @@ This produces a custom orange background with black text.
 IMPORTANT CONFIGURATION BEHAVIOR
 ================================
 
-The SystemBanner ADMX and ADML file instalaltion establishes configuration via 
+The SystemBanner ADMX and ADML file installation establishes configuration via 
 local gpedit.msc, or Group Policy. The direct registry manipulation is a method
 if those methods are not available to you, such as Intune deployment of Windows 
 Home edition, or you just like direct registry manipulation.
@@ -314,7 +314,7 @@ $isAdmin = ([Security.Principal.WindowsPrincipal]([Security.Principal.WindowsIde
 
 if (-not $isAdmin) {
     Write-Host "SystemBanner installation failed: Administrator privileges are required."
-    exit 1
+    exit 1
 }
 
 # ============================================================
@@ -368,7 +368,6 @@ $BannerPositionSetting = 0
 
 $RunCommand = "`"$exePath`""
 
-
 # ============================================================
 # STOP EXISTING SYSTEMBANNER
 # ============================================================
@@ -383,19 +382,19 @@ Stop-Process -Name "SystemBanner" -Force -ErrorAction SilentlyContinue
 
 if (-not (Test-Path -LiteralPath $admxSource -PathType Leaf)) {
     Write-Host "SystemBanner cannot continue: Source SystemBanner.admx was not found."
-    Break
+    exit 1
 }
 
 if (-not (Test-Path -LiteralPath $admlSource -PathType Leaf)) {
     Write-Host "SystemBanner cannot continue: Source SystemBanner.adml was not found."
-    Break
+    exit 1
 }
 
 $releasePath = Join-Path $sourceRoot "Code\SystemBanner\SystemBanner\bin\Release"
 
 if (-not (Test-Path -LiteralPath $releasePath -PathType Container)) {
     Write-Host "SystemBanner cannot continue: Source Application Release directory was not found."
-    Break
+    exit 1
 }
 
 # ============================================================
@@ -434,7 +433,7 @@ try {
 }
 catch {
     Write-Host "SystemBanner installation failed: $($_.Exception.Message)"
-    Break
+    exit 1
 }
 
 # ============================================================
@@ -476,7 +475,7 @@ if ($null -eq $runValue -or $runValue.SystemBanner -ne $RunCommand) {
 
 if (-not $installationValid) {
     Write-Host "SystemBanner installation validation failed."
-    Break
+    exit 1
 }
 
 # ============================================================
@@ -486,7 +485,7 @@ if (-not $installationValid) {
 try {
     Write-Host "Creating SystemBanner policy registry key..."
 
-    New-Item -ItemType Directory -Path $policyPath -Force -ErrorAction Stop | Out-Null
+    New-Item -Path $policyPath -Force -ErrorAction Stop | Out-Null
 
     # --------------------------------------------------------
     # Configure built-in UNCLASSIFIED classification.
@@ -532,7 +531,7 @@ try {
 
 } catch {
     Write-Host "SystemBanner configuration failed: $($_.Exception.Message)"
-    Break
+    exit 1
 }
 
 # ============================================================
@@ -584,7 +583,7 @@ if ($null -eq $policy) {
 
 if (-not $configurationValid) {
     Write-Host "SystemBanner installation is valid, but configuration validation failed."
-    Break
+    exit 1
 }
 
 # ============================================================
@@ -598,7 +597,7 @@ try {
 }
 catch {
     Write-Host "SystemBanner configuration is valid, but the application could not be started: $($_.Exception.Message)"
-    Break
+    exit 1
 }
 
 # ============================================================
