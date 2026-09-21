@@ -96,7 +96,7 @@ Uninstallation and configuration modify locations under `HKLM` and `C:\Program F
 
 The scripts therefore require administrative privileges when run interactively.
 
-When deployed through an endpoint management platform, they should run in the system context.
+When deployed through an endpoint management platform, they should run in the system context and in **64-bit PowerShell** on 64-bit Windows (Intune: enable “Run script in 64-bit PowerShell”). SystemBanner reads policy from the 64-bit registry view (`RegistryView.Registry64`), so 32-bit execution can write to WOW6432Node and have no effect.
 
 ## Notes
 
