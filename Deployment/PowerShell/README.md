@@ -1,37 +1,12 @@
 # SystemBanner PowerShell Deployment Scripts
 
-This directory contains PowerShell scripts for deploying, configuring, detecting, and removing SystemBanner on Windows.
+This directory contains PowerShell scripts for configuring and removing SystemBanner on Windows.
 
-The scripts are intended to provide an alternative to the existing batch-file installation method and are used to automate installation and configuration when you do not have Group Policy (Cloud Only) or no access to gpedit.msc (Windows Home Edition). 
+The scripts are intended to provide an alternative to the existing GPO, gpedit.msc, and manual registry methods and are used to automate configuration and uninstallation when you do not have Group Policy (Cloud Only) or no access to gpedit.msc (Windows Home Edition). 
 
-The majority of the scripts are in Detect/Remediate pairs for deployment via manual deployment or with your favorite endpoint management platforms such as Microsoft Intune or Automox. There is one script that is tooled as a standalone install with a default configuration for UNCLASSIFIED. You can easily edit this one since I added inline comments for each configuration setting.
+The scripts are in Detect/Remediate pairs for deployment via your favorite endpoint management platform such as Microsoft Intune or Automox.
 
 ## Contents
-
-### Installation
-
-## Standalone
-`systemBannerStandAloneInstall.ps1`
-
-Installs SystemBanner and its supporting files:
-
-* Copies the SystemBanner application to `C:\Program Files\SystemBanner`
-* Installs the SystemBanner ADMX and ADML policy templates
-* Configures the SystemBanner application for high-DPI awareness
-* Creates the machine-wide startup entry used to launch SystemBanner when users sign in
-* Validates the installation
-* Configures the SystemBanner application for the simple classification of UNCLASSIFIED
-
-  
-`systemBannerInstall-Detect.ps1` and `systemBannerInstall-Remediation.ps1`
-
-Detects installation of SystemBanner, if not detected it installs SystemBanner and its supporting files:
-
-* Copies the SystemBanner application to `C:\Program Files\SystemBanner`
-* Installs the SystemBanner ADMX and ADML policy templates
-* Configures the SystemBanner application for high-DPI awareness
-* Creates the machine-wide startup entry used to launch SystemBanner when users sign in
-* Validates the installation
 
 ### Uninstallation
 
@@ -106,22 +81,19 @@ and custom foreground color, #000000 (RGB: 0, 0, 0) and background color, #FF8C0
 
 Custom configuration should only be used where the organization's security marking requirements permit it.
 
-## Using With Microsoft Intune
+## Using With Microsoft Intune or Automox
 
 The scripts can be used with Intune Proactive Remediations or Automox Worklets to separate installation, detection, and configuration.
 
 A typical deployment can consist of:
 
 1. Install SystemBanner
-  a. Create one Proactive Remediation or Worklet with the `systemBannerInstall-Detect.ps1` and `systemBannerInstall-Remediation.ps1`
-2. Apply the required classification configuration
-  a. Create a separate Proactive Remediation or Worklet with the desired classification scripts, i.e., `systemBannerSetTopSecretSCI-Detect.ps1` and `systemBannerSetTopSecretSCI-Remediate.ps1`
-
-This allows the SystemBanner application and its configuration to be managed independently.
+2. Apply the desired classification configuration
+  a. Create a Proactive Remediation (Intune) or Worklet (Automox) with the desired classification scripts, i.e., `systemBannerSetTopSecretSCI-Detect.ps1` and `systemBannerSetTopSecretSCI-Remediate.ps1`
 
 ## Administrative Privileges
 
-Installation, uninstallation, and configuration modify locations under `HKLM` and `C:\Program Files`.
+Uninstallation and configuration modify locations under `HKLM` and `C:\Program Files`.
 
 The scripts therefore require administrative privileges when run interactively.
 
