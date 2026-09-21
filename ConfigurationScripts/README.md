@@ -88,8 +88,7 @@ The scripts can be used with Intune Proactive Remediations or Automox Worklets t
 A typical deployment can consist of:
 
 1. Install SystemBanner
-2. Apply the desired classification configuration
-  a. Create a Proactive Remediation (Intune) or Worklet (Automox) with the desired classification scripts, i.e., `systemBannerSetTopSecretSCI-Detect.ps1` and `systemBannerSetTopSecretSCI-Remediate.ps1`
+2. Apply the desired classification configuration by creating a Proactive Remediation (Intune) or Worklet (Automox) with the desired classification scripts, i.e., `systemBannerSetTopSecretSCI-Detect.ps1` and `systemBannerSetTopSecretSCI-Remediate.ps1`
 
 ## Administrative Privileges
 
