@@ -10,11 +10,11 @@
 # Paths
 # ------------------------------------------------------------
 
-$installPath = "C:\Program Files\SystemBanner"
+$installPath = Join-Path $env:ProgramFiles "SystemBanner"
 $exePath     = Join-Path $installPath "SystemBanner.exe"
 
-$admxPath = "C:\Windows\PolicyDefinitions\SystemBanner.admx"
-$admlPath = "C:\Windows\PolicyDefinitions\en-US\SystemBanner.adml"
+$admxPath = Join-Path $env:windir "PolicyDefinitions\SystemBanner.admx"
+$admlPath = Join-Path $env:windir "PolicyDefinitions\en-US\SystemBanner.adml"
 
 $appCompatPath = "HKLM:\Software\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers"
 $runPath       = "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Run"
