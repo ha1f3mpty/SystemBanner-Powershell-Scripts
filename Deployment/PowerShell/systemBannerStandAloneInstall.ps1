@@ -314,7 +314,7 @@ $isAdmin = ([Security.Principal.WindowsPrincipal]([Security.Principal.WindowsIde
 
 if (-not $isAdmin) {
     Write-Host "SystemBanner installation failed: Administrator privileges are required."
-    Break
+    exit 1
 }
 
 # ============================================================
@@ -366,7 +366,8 @@ $BannerPositionSetting = 0
 
 # Machine-wide startup command.
 
-$RunCommand = "`"$exePath`""
+$RunCommand = "`"$exePath`""
+
 
 # ============================================================
 # STOP EXISTING SYSTEMBANNER
