@@ -3,13 +3,16 @@
 $PolicyPath = "HKLM:\Software\Policies\SystemBanner"
 $exePath    = "C:\Program Files\SystemBanner\SystemBanner.exe"
 
+$SimpleClassificationSetting = 4
+$BannerPositionSetting       = 0
+
 try {
     if (-not (Test-Path -LiteralPath $PolicyPath)) {
         New-Item -Path $PolicyPath -Force -ErrorAction Stop | Out-Null
     }
 
-    New-ItemProperty -Path $PolicyPath -Name "Simple" -PropertyType DWord -Value 4 -Force -ErrorAction Stop | Out-Null
-    New-ItemProperty -Path $PolicyPath -Name "TopAndBottom" -PropertyType DWord -Value 0 -Force -ErrorAction Stop | Out-Null
+    New-ItemProperty -Path $PolicyPath -Name "Simple" -PropertyType DWord -Value $SimpleClassificationSetting -Force -ErrorAction Stop | Out-Null
+    New-ItemProperty -Path $PolicyPath -Name "TopAndBottom" -PropertyType DWord -Value $BannerPositionSetting -Force -ErrorAction Stop | Out-Null
 }
 catch {
     Write-Host "SystemBanner Secret configuration failed: $($_.Exception.Message)"
@@ -19,12 +22,12 @@ catch {
 $Simple   = Get-ItemProperty -Path $PolicyPath -Name "Simple" -ErrorAction SilentlyContinue
 $Position = Get-ItemProperty -Path $PolicyPath -Name "TopAndBottom" -ErrorAction SilentlyContinue
 
-if ($null -eq $Simple -or $Simple.Simple -ne 4) {
+if ($null -eq $Simple -or $Simple.Simple -ne $SimpleClassificationSetting) {
     Write-Host "Validation failed: Simple Classification is not set to SECRET."
     exit 1
 }
 
-if ($null -eq $Position -or $Position.TopAndBottom -ne 0) {
+if ($null -eq $Position -or $Position.TopAndBottom -ne $BannerPositionSetting) {
     Write-Host "Validation failed: Banner Position is not set to TOP ONLY."
     exit 1
 }

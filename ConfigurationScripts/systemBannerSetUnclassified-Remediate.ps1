@@ -34,13 +34,8 @@ $BannerPositionSetting       = 0
 try {
 
     if (-not (Test-Path -LiteralPath $PolicyPath)) {
-        New-Item `
-            -Path $PolicyPath `
-            -Force `
-            -ErrorAction Stop |
-            Out-Null
+        New-Item -Path $PolicyPath -Force -ErrorAction Stop | Out-Null
     }
-
 
     # --------------------------------------------------------
     # Simple Classification
@@ -48,15 +43,7 @@ try {
     # 1 = UNCLASSIFIED
     # --------------------------------------------------------
 
-    New-ItemProperty `
-        -Path $PolicyPath `
-        -Name "Simple" `
-        -PropertyType DWord `
-        -Value $SimpleClassificationSetting `
-        -Force `
-        -ErrorAction Stop |
-        Out-Null
-
+    New-ItemProperty -Path $PolicyPath -Name "Simple" -PropertyType DWord -Value $SimpleClassificationSetting -Force -ErrorAction Stop | Out-Null
 
     # --------------------------------------------------------
     # Banner Position
@@ -64,14 +51,7 @@ try {
     # 0 = TOP ONLY
     # --------------------------------------------------------
 
-    New-ItemProperty `
-        -Path $PolicyPath `
-        -Name "TopAndBottom" `
-        -PropertyType DWord `
-        -Value $BannerPositionSetting `
-        -Force `
-        -ErrorAction Stop |
-        Out-Null
+    New-ItemProperty -Path $PolicyPath -Name "TopAndBottom" -PropertyType DWord -Value $BannerPositionSetting -Force -ErrorAction Stop | Out-Null
 
 }
 catch {
@@ -84,15 +64,9 @@ catch {
 # VALIDATE
 # ============================================================
 
-$Simple = Get-ItemProperty `
-    -Path $PolicyPath `
-    -Name "Simple" `
-    -ErrorAction SilentlyContinue
+$Simple = Get-ItemProperty -Path $PolicyPath -Name "Simple" -ErrorAction SilentlyContinue
 
-$Position = Get-ItemProperty `
-    -Path $PolicyPath `
-    -Name "TopAndBottom" `
-    -ErrorAction SilentlyContinue
+$Position = Get-ItemProperty -Path $PolicyPath -Name "TopAndBottom" -ErrorAction SilentlyContinue
 
 
 if ($null -eq $Simple -or

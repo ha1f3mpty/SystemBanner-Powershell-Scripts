@@ -261,26 +261,14 @@ try {
     # SIMPLE CLASSIFICATION
     # ==========================================================================
 
-    New-ItemProperty `
-        -Path $PolicyPath `
-        -Name "Simple" `
-        -PropertyType DWord `
-        -Value $SimpleClassificationSetting `
-        -Force `
-        -ErrorAction Stop | Out-Null
+    New-ItemProperty -Path $PolicyPath -Name "Simple" -PropertyType DWord -Value $SimpleClassificationSetting -Force -ErrorAction Stop | Out-Null
 
 
     # ==========================================================================
     # BANNER POSITION
     # ==========================================================================
 
-    New-ItemProperty `
-        -Path $PolicyPath `
-        -Name "TopAndBottom" `
-        -PropertyType DWord `
-        -Value $BannerPositionSetting `
-        -Force `
-        -ErrorAction Stop | Out-Null
+    New-ItemProperty -Path $PolicyPath -Name "TopAndBottom" -PropertyType DWord -Value $BannerPositionSetting -Force -ErrorAction Stop | Out-Null
 
 
     # ==========================================================================
@@ -293,30 +281,11 @@ try {
     #     2 = Blue
     # ==========================================================================
 
-    New-ItemProperty `
-        -Path $PolicyPath `
-        -Name "0" `
-        -PropertyType DWord `
-        -Value $BackgroundColor[0] `
-        -Force `
-        -ErrorAction Stop | Out-Null
+    New-ItemProperty -Path $PolicyPath -Name "0" -PropertyType DWord -Value $BackgroundColor[0] -Force -ErrorAction Stop | Out-Null
 
-    New-ItemProperty `
-        -Path $PolicyPath `
-        -Name "1" `
-        -PropertyType DWord `
-        -Value $BackgroundColor[1] `
-        -Force `
-        -ErrorAction Stop | Out-Null
+    New-ItemProperty -Path $PolicyPath -Name "1" -PropertyType DWord -Value $BackgroundColor[1] -Force -ErrorAction Stop | Out-Null
 
-    New-ItemProperty `
-        -Path $PolicyPath `
-        -Name "2" `
-        -PropertyType DWord `
-        -Value $BackgroundColor[2] `
-        -Force `
-        -ErrorAction Stop | Out-Null
-
+    New-ItemProperty -Path $PolicyPath -Name "2" -PropertyType DWord -Value $BackgroundColor[2] -Force -ErrorAction Stop | Out-Null
 
     # ==========================================================================
     # FOREGROUND COLOR
@@ -328,42 +297,17 @@ try {
     #     5 = Blue
     # ==========================================================================
 
-    New-ItemProperty `
-        -Path $PolicyPath `
-        -Name "3" `
-        -PropertyType DWord `
-        -Value $ForegroundColor[0] `
-        -Force `
-        -ErrorAction Stop | Out-Null
+    New-ItemProperty -Path $PolicyPath -Name "3" -PropertyType DWord -Value $ForegroundColor[0] -Force -ErrorAction Stop | Out-Null
 
-    New-ItemProperty `
-        -Path $PolicyPath `
-        -Name "4" `
-        -PropertyType DWord `
-        -Value $ForegroundColor[1] `
-        -Force `
-        -ErrorAction Stop | Out-Null
+    New-ItemProperty -Path $PolicyPath -Name "4" -PropertyType DWord -Value $ForegroundColor[1] -Force -ErrorAction Stop | Out-Null
 
-    New-ItemProperty `
-        -Path $PolicyPath `
-        -Name "5" `
-        -PropertyType DWord `
-        -Value $ForegroundColor[2] `
-        -Force `
-        -ErrorAction Stop | Out-Null
-
+    New-ItemProperty -Path $PolicyPath -Name "5" -PropertyType DWord -Value $ForegroundColor[2] -Force -ErrorAction Stop | Out-Null
 
     # ==========================================================================
     # CUSTOM TEXT
     # ==========================================================================
 
-    New-ItemProperty `
-        -Path $PolicyPath `
-        -Name "Text" `
-        -PropertyType String `
-        -Value $BannerText `
-        -Force `
-        -ErrorAction Stop | Out-Null
+    New-ItemProperty -Path $PolicyPath -Name "Text" -PropertyType String -Value $BannerText -Force -ErrorAction Stop | Out-Null
 }
 catch {
     Write-Host "SystemBanner custom TS//SAR configuration failed: $($_.Exception.Message)"
@@ -375,10 +319,7 @@ catch {
 # CONFIGURATION VALIDATION
 # ==============================================================================
 
-$Simple = Get-ItemProperty `
-    -Path $PolicyPath `
-    -Name "Simple" `
-    -ErrorAction SilentlyContinue
+$Simple = Get-ItemProperty -Path $PolicyPath -Name "Simple" -ErrorAction SilentlyContinue
 
 if ($null -eq $Simple -or $Simple.Simple -ne $SimpleClassificationSetting) {
     Write-Host "Validation failed: Simple Classification does not match the configured value."
@@ -386,10 +327,7 @@ if ($null -eq $Simple -or $Simple.Simple -ne $SimpleClassificationSetting) {
 }
 
 
-$Position = Get-ItemProperty `
-    -Path $PolicyPath `
-    -Name "TopAndBottom" `
-    -ErrorAction SilentlyContinue
+$Position = Get-ItemProperty -Path $PolicyPath -Name "TopAndBottom" -ErrorAction SilentlyContinue
 
 if ($null -eq $Position -or $Position.TopAndBottom -ne $BannerPositionSetting) {
     Write-Host "Validation failed: Banner Position does not match the configured value."
@@ -401,20 +339,11 @@ if ($null -eq $Position -or $Position.TopAndBottom -ne $BannerPositionSetting) {
 # BACKGROUND COLOR
 # ------------------------------------------------------------------------------
 
-$Red = Get-ItemProperty `
-    -Path $PolicyPath `
-    -Name "0" `
-    -ErrorAction SilentlyContinue
+$Red = Get-ItemProperty -Path $PolicyPath -Name "0" -ErrorAction SilentlyContinue
 
-$Green = Get-ItemProperty `
-    -Path $PolicyPath `
-    -Name "1" `
-    -ErrorAction SilentlyContinue
+$Green = Get-ItemProperty -Path $PolicyPath -Name "1" -ErrorAction SilentlyContinue
 
-$Blue = Get-ItemProperty `
-    -Path $PolicyPath `
-    -Name "2" `
-    -ErrorAction SilentlyContinue
+$Blue = Get-ItemProperty -Path $PolicyPath -Name "2" -ErrorAction SilentlyContinue
 
 if ($null -eq $Red -or $Red.'0' -ne $BackgroundColor[0]) {
     Write-Host "Validation failed: Background Red does not match the configured value."
@@ -436,20 +365,11 @@ if ($null -eq $Blue -or $Blue.'2' -ne $BackgroundColor[2]) {
 # FOREGROUND COLOR
 # ------------------------------------------------------------------------------
 
-$ForegroundRed = Get-ItemProperty `
-    -Path $PolicyPath `
-    -Name "3" `
-    -ErrorAction SilentlyContinue
+$ForegroundRed = Get-ItemProperty -Path $PolicyPath -Name "3" -ErrorAction SilentlyContinue
 
-$ForegroundGreen = Get-ItemProperty `
-    -Path $PolicyPath `
-    -Name "4" `
-    -ErrorAction SilentlyContinue
+$ForegroundGreen = Get-ItemProperty -Path $PolicyPath -Name "4" -ErrorAction SilentlyContinue
 
-$ForegroundBlue = Get-ItemProperty `
-    -Path $PolicyPath `
-    -Name "5" `
-    -ErrorAction SilentlyContinue
+$ForegroundBlue = Get-ItemProperty -Path $PolicyPath -Name "5" -ErrorAction SilentlyContinue
 
 if ($null -eq $ForegroundRed -or $ForegroundRed.'3' -ne $ForegroundColor[0]) {
     Write-Host "Validation failed: Foreground Red does not match the configured value."
@@ -471,10 +391,7 @@ if ($null -eq $ForegroundBlue -or $ForegroundBlue.'5' -ne $ForegroundColor[2]) {
 # CUSTOM TEXT
 # ------------------------------------------------------------------------------
 
-$Text = Get-ItemProperty `
-    -Path $PolicyPath `
-    -Name "Text" `
-    -ErrorAction SilentlyContinue
+$Text = Get-ItemProperty -Path $PolicyPath -Name "Text" -ErrorAction SilentlyContinue
 
 if ($null -eq $Text -or $Text.Text -ne $BannerText) {
     Write-Host "Validation failed: Custom Banner Text does not match the configured value."
@@ -496,9 +413,7 @@ if (-not (Test-Path -LiteralPath $exePath -PathType Leaf)) {
 try {
     Stop-Process -Name "SystemBanner" -Force -ErrorAction SilentlyContinue
 
-    Start-Process `
-        -FilePath $exePath `
-        -ErrorAction Stop
+    Start-Process -FilePath $exePath -ErrorAction Stop
 }
 catch {
     Write-Host "SystemBanner configuration is correct, but the application failed to start: $($_.Exception.Message)"

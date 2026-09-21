@@ -157,6 +157,21 @@ EXIT CODES
 
 $PolicyPath = "HKLM:\Software\Policies\SystemBanner"
 
+# Expected settings:
+#
+# Simple:
+#   0 = UNCONFIGURED
+#   1 = UNCLASSIFIED
+#   2 = CUI
+#   3 = CONFIDENTIAL
+#   4 = SECRET
+#   5 = TOP SECRET
+#   6 = TOP SECRET SCI
+#
+# TopAndBottom:
+#   0 = TOP ONLY
+#   1 = TOP AND BOTTOM
+
 $ExpectedSimpleClassification = 0
 $ExpectedBannerPosition       = 0
 
@@ -189,12 +204,11 @@ if (-not (Test-Path -LiteralPath $PolicyPath)) {
 # SIMPLE CLASSIFICATION
 # ==============================================================================
 
-$Simple = Get-ItemProperty `
-    -Path $PolicyPath `
-    -Name "Simple" `
-    -ErrorAction SilentlyContinue
+$Simple = Get-ItemProperty -Path $PolicyPath -Name "Simple" -ErrorAction SilentlyContinue
 
-if ($null -eq $Simple -or $Simple.Simple -ne $ExpectedSimpleClassification) {
+if ($null -eq $Simple -or 
+    $Simple.Simple -ne $ExpectedSimpleClassification) {
+
     Write-Host "Detection failed: Simple Classification does not match the expected configuration."
     exit 1
 }
@@ -204,12 +218,11 @@ if ($null -eq $Simple -or $Simple.Simple -ne $ExpectedSimpleClassification) {
 # BANNER POSITION
 # ==============================================================================
 
-$Position = Get-ItemProperty `
-    -Path $PolicyPath `
-    -Name "TopAndBottom" `
-    -ErrorAction SilentlyContinue
+$Position = Get-ItemProperty -Path $PolicyPath -Name "TopAndBottom" -ErrorAction SilentlyContinue
 
-if ($null -eq $Position -or $Position.TopAndBottom -ne $ExpectedBannerPosition) {
+if ($null -eq $Position -or 
+    $Position.TopAndBottom -ne $ExpectedBannerPosition) {
+
     Write-Host "Detection failed: Banner Position does not match the expected configuration."
     exit 1
 }
@@ -225,32 +238,29 @@ if ($null -eq $Position -or $Position.TopAndBottom -ne $ExpectedBannerPosition) 
 #     2 = Blue
 # ==============================================================================
 
-$Red = Get-ItemProperty `
-    -Path $PolicyPath `
-    -Name "0" `
-    -ErrorAction SilentlyContinue
+$Red = Get-ItemProperty -Path $PolicyPath -Name "0" -ErrorAction SilentlyContinue
 
-$Green = Get-ItemProperty `
-    -Path $PolicyPath `
-    -Name "1" `
-    -ErrorAction SilentlyContinue
+$Green = Get-ItemProperty -Path $PolicyPath -Name "1" -ErrorAction SilentlyContinue
 
-$Blue = Get-ItemProperty `
-    -Path $PolicyPath `
-    -Name "2" `
-    -ErrorAction SilentlyContinue
+$Blue = Get-ItemProperty -Path $PolicyPath -Name "2" -ErrorAction SilentlyContinue
 
-if ($null -eq $Red -or $Red.'0' -ne $ExpectedBackgroundColor.Red) {
+if ($null -eq $Red -or 
+    $Red.'0' -ne $ExpectedBackgroundColor.Red) {
+        
     Write-Host "Detection failed: Background Red does not match the expected configuration."
     exit 1
 }
 
-if ($null -eq $Green -or $Green.'1' -ne $ExpectedBackgroundColor.Green) {
+if ($null -eq $Green -or 
+    $Green.'1' -ne $ExpectedBackgroundColor.Green) {
+
     Write-Host "Detection failed: Background Green does not match the expected configuration."
     exit 1
 }
 
-if ($null -eq $Blue -or $Blue.'2' -ne $ExpectedBackgroundColor.Blue) {
+if ($null -eq $Blue -or 
+    $Blue.'2' -ne $ExpectedBackgroundColor.Blue) {
+
     Write-Host "Detection failed: Background Blue does not match the expected configuration."
     exit 1
 }
@@ -266,32 +276,29 @@ if ($null -eq $Blue -or $Blue.'2' -ne $ExpectedBackgroundColor.Blue) {
 #     5 = Blue
 # ==============================================================================
 
-$ForegroundRed = Get-ItemProperty `
-    -Path $PolicyPath `
-    -Name "3" `
-    -ErrorAction SilentlyContinue
+$ForegroundRed = Get-ItemProperty -Path $PolicyPath -Name "3" -ErrorAction SilentlyContinue
 
-$ForegroundGreen = Get-ItemProperty `
-    -Path $PolicyPath `
-    -Name "4" `
-    -ErrorAction SilentlyContinue
+$ForegroundGreen = Get-ItemProperty -Path $PolicyPath -Name "4" -ErrorAction SilentlyContinue
 
-$ForegroundBlue = Get-ItemProperty `
-    -Path $PolicyPath `
-    -Name "5" `
-    -ErrorAction SilentlyContinue
+$ForegroundBlue = Get-ItemProperty -Path $PolicyPath -Name "5" -ErrorAction SilentlyContinue
 
-if ($null -eq $ForegroundRed -or $ForegroundRed.'3' -ne $ExpectedForegroundColor.Red) {
+if ($null -eq $ForegroundRed -or 
+    $ForegroundRed.'3' -ne $ExpectedForegroundColor.Red) {
+
     Write-Host "Detection failed: Foreground Red does not match the expected configuration."
     exit 1
 }
 
-if ($null -eq $ForegroundGreen -or $ForegroundGreen.'4' -ne $ExpectedForegroundColor.Green) {
+if ($null -eq $ForegroundGreen -or 
+    $ForegroundGreen.'4' -ne $ExpectedForegroundColor.Green) {
+
     Write-Host "Detection failed: Foreground Green does not match the expected configuration."
     exit 1
 }
 
-if ($null -eq $ForegroundBlue -or $ForegroundBlue.'5' -ne $ExpectedForegroundColor.Blue) {
+if ($null -eq $ForegroundBlue -or 
+    $ForegroundBlue.'5' -ne $ExpectedForegroundColor.Blue) {
+
     Write-Host "Detection failed: Foreground Blue does not match the expected configuration."
     exit 1
 }
@@ -301,12 +308,11 @@ if ($null -eq $ForegroundBlue -or $ForegroundBlue.'5' -ne $ExpectedForegroundCol
 # CUSTOM TEXT
 # ==============================================================================
 
-$Text = Get-ItemProperty `
-    -Path $PolicyPath `
-    -Name "Text" `
-    -ErrorAction SilentlyContinue
+$Text = Get-ItemProperty -Path $PolicyPath -Name "Text" -ErrorAction SilentlyContinue
 
-if ($null -eq $Text -or $Text.Text -ne $ExpectedBannerText) {
+if ($null -eq $Text -or 
+    $Text.Text -ne $ExpectedBannerText) {
+
     Write-Host "Detection failed: Custom Banner Text does not match the expected configuration."
     exit 1
 }

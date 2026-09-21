@@ -41,10 +41,7 @@ if (-not (Test-Path -LiteralPath $PolicyPath)) {
 # Check Simple Classification
 # ------------------------------------------------------------
 
-$Simple = Get-ItemProperty `
-    -Path $PolicyPath `
-    -Name "Simple" `
-    -ErrorAction SilentlyContinue
+$Simple = Get-ItemProperty -Path $PolicyPath -Name "Simple" -ErrorAction SilentlyContinue
 
 if ($null -eq $Simple -or
     $Simple.Simple -ne $ExpectedSimpleClassification) {
@@ -58,10 +55,7 @@ if ($null -eq $Simple -or
 # Check Banner Position
 # ------------------------------------------------------------
 
-$Position = Get-ItemProperty `
-    -Path $PolicyPath `
-    -Name "TopAndBottom" `
-    -ErrorAction SilentlyContinue
+$Position = Get-ItemProperty -Path $PolicyPath -Name "TopAndBottom" -ErrorAction SilentlyContinue
 
 if ($null -eq $Position -or
     $Position.TopAndBottom -ne $ExpectedBannerPosition) {
