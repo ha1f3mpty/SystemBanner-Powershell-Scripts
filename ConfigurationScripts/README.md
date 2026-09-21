@@ -1,4 +1,4 @@
-# SystemBanner PowerShell Deployment Scripts
+# SystemBanner PowerShell Configuration Scripts
 
 This directory contains PowerShell scripts for configuring and removing SystemBanner on Windows.
 
