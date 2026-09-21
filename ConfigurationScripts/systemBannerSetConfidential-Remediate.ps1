@@ -3,7 +3,9 @@
 # ============================================================
 
 $PolicyPath = "HKLM:\Software\Policies\SystemBanner"
-$exePath    = "C:\Program Files\SystemBanner\SystemBanner.exe"
+$programFiles = if ($env:ProgramW6432) { $env:ProgramW6432 } else { $env:ProgramFiles }
+$installPath = Join-Path $programFiles "SystemBanner"
+$exePath     = Join-Path $installPath "SystemBanner.exe"
 
 $SimpleClassificationSetting = 3
 $BannerPositionSetting       = 0

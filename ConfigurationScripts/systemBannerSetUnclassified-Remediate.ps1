@@ -88,7 +88,9 @@ if ($null -eq $Position -or
 # Start SystemBanner
 # ------------------------------------------------------------
 
-$exePath = "C:\Program Files\SystemBanner\SystemBanner.exe"
+$programFiles = if ($env:ProgramW6432) { $env:ProgramW6432 } else { $env:ProgramFiles }
+$installPath = Join-Path $programFiles "SystemBanner"
+$exePath     = Join-Path $installPath "SystemBanner.exe"
 
 try {
     Start-Process -FilePath $exePath -ErrorAction Stop
